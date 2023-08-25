@@ -132,7 +132,7 @@ rjournal_web_article <- function(toc = FALSE, self_contained = FALSE,
 
     # save Rmd path for later use
     rmd_path <<- normalizePath(input_file)
-    render_pdf <<- !is.null(metadata$author) && !web_only
+    render_pdf <<- !is.null(metadata$author) && !(legacy_pdf && web_only)
 
     # Pass updated metadata to distill's post_knit()
     distill_post_knit(metadata, input_file, runtime, ...)
